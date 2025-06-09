@@ -16,12 +16,12 @@ const HintOverlay = ({ isVisible, hint, onClose }) => {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    {/* Hint Position Indicator */}
+{/* Hint Position Indicator */}
                     <motion.div
                         className="absolute pointer-events-none"
                         style={{
-                            left: hint.optimalPosition.x - 25,
-                            top: hint.optimalPosition.y - 25,
+                            left: Math.max(25, Math.min(775, hint.optimalPosition.x - 25)),
+                            top: Math.max(25, Math.min(575, hint.optimalPosition.y - 25)),
                             transform: `rotate(${hint.optimalRotation}deg) scale(${hint.optimalScale})`
                         }}
                         initial={{ scale: 0, opacity: 0 }}
@@ -30,16 +30,19 @@ const HintOverlay = ({ isVisible, hint, onClose }) => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
                         {/* Optimal Position Circle */}
-                        <div className="w-12 h-12 border-4 border-warning rounded-full bg-warning/20 animate-pulse-hint">
+                        <div className="w-16 h-16 border-4 border-warning rounded-full bg-warning/30 animate-pulse-hint shadow-lg shadow-warning/50">
                             <div className="w-full h-full flex items-center justify-center">
-                                <ApperIcon name="Target" size={20} className="text-warning" />
+                                <ApperIcon name="Target" size={24} className="text-warning drop-shadow-lg" />
                             </div>
                         </div>
                         
                         {/* Rotation Indicator */}
-                        <div className="absolute -top-2 -right-2 w-6 h-6 bg-warning rounded-full flex items-center justify-center">
-                            <ApperIcon name="RotateCw" size={12} className="text-white" />
+                        <div className="absolute -top-2 -right-2 w-8 h-8 bg-warning rounded-full flex items-center justify-center shadow-lg border-2 border-white">
+                            <ApperIcon name="RotateCw" size={14} className="text-white" />
                         </div>
+                        
+                        {/* Pulsing Ring */}
+                        <div className="absolute inset-0 w-16 h-16 border-2 border-warning/50 rounded-full animate-ping"></div>
                     </motion.div>
 
                     {/* Hint Instructions */}

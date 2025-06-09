@@ -25,22 +25,28 @@ const ControlPanel = ({
 
                 <div className="flex items-center space-x-3">
                     {gameStarted && !gameOver && (
-                        <>
+<>
                             <Button
                                 onClick={onUseHint}
                                 disabled={!selectedShape || hintsRemaining <= 0}
-                                className={`px-4 py-2 rounded-lg border transition-all duration-200 flex items-center ${
+                                className={`px-4 py-2 rounded-lg border transition-all duration-200 flex items-center shadow-lg ${
                                     selectedShape && hintsRemaining > 0
-                                        ? 'bg-warning hover:bg-warning/80 border-warning text-white'
-                                        : 'bg-surface-700 border-surface-600 text-gray-400 cursor-not-allowed'
+                                        ? 'bg-warning hover:bg-warning/80 border-warning text-white hover:shadow-warning/25'
+                                        : 'bg-surface-700 border-surface-600 text-gray-400 cursor-not-allowed opacity-50'
                                 }`}
-                                whileHover={selectedShape && hintsRemaining > 0 ? { scale: 1.02 } : {}}
-                                whileTap={selectedShape && hintsRemaining > 0 ? { scale: 0.98 } : {}}
+                                whileHover={selectedShape && hintsRemaining > 0 ? { scale: 1.05, y: -2 } : {}}
+                                whileTap={selectedShape && hintsRemaining > 0 ? { scale: 0.95 } : {}}
                             >
-                                <ApperIcon name="Lightbulb" size={16} className="mr-2" />
+                                <ApperIcon 
+                                    name="Lightbulb" 
+                                    size={16} 
+                                    className={`mr-2 ${selectedShape && hintsRemaining > 0 ? 'animate-pulse' : ''}`} 
+                                />
                                 Hint
-                                <span className={`ml-2 px-2 py-1 rounded-full text-xs font-bold ${
-                                    hintsRemaining > 0 ? 'bg-white text-warning' : 'bg-surface-600 text-gray-500'
+                                <span className={`ml-2 px-2 py-1 rounded-full text-xs font-bold transition-all ${
+                                    hintsRemaining > 0 
+                                        ? 'bg-white text-warning shadow-sm' 
+                                        : 'bg-surface-600 text-gray-500'
                                 }`}>
                                     {hintsRemaining}
                                 </span>

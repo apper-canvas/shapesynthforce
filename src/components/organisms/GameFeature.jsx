@@ -219,30 +219,48 @@ const nextLevel = useCallback(async () => {
         return 'text-error';
 }, [gameState, currentLevel]);
 
-    const handleUseHint = useCallback(async () => {
-        if (hintsRemaining <= 0 || !selectedShape || !currentLevel) {
-            toast.warning('No hints remaining or no shape selected');
+const handleUseHint = useCallback(async () => {
+        if (hintsRemaining <= 0) {
+            toast.warning('No hints remaining for this level!');
+            return;
+        }
+        
+        if (!selectedShape) {
+            toast.warning('Please select a shape first to get a hint.');
+            return;
+        }
+        
+        if (!currentLevel) {
+            toast.error('Level not loaded. Please restart the game.');
             return;
         }
 
         try {
+            toast.info('Getting hint...', { autoClose: 1000 });
             const hint = await hintService.getOptimalSolution(currentLevel.id, selectedShape);
+            
+            if (!hint || !hint.optimalPosition) {
+                toast.error('Invalid hint data received.');
+                return;
+            }
+            
             setCurrentHint(hint);
             setShowHint(true);
             setHintsRemaining(prev => prev - 1);
 
-            // Auto-hide hint after 3 seconds
+            // Auto-hide hint after 4 seconds (longer for better visibility)
             if (hintTimerRef.current) {
                 clearTimeout(hintTimerRef.current);
             }
             hintTimerRef.current = setTimeout(() => {
                 setShowHint(false);
                 setCurrentHint(null);
-            }, 3000);
+            }, 4000);
 
-            toast.success('Hint displayed! Watch the optimal position.');
+            toast.success(`Hint displayed! ${hintsRemaining - 1} hints remaining.`, { autoClose: 2000 });
         } catch (error) {
-            toast.error('Failed to get hint');
+            console.error('Hint error:', error);
+            toast.error('Failed to get hint. Please try again.');
         }
     }, [hintsRemaining, selectedShape, currentLevel]);
 
