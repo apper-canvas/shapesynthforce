@@ -57,7 +57,7 @@ class GameStateService {
     await delay(100);
     this.gameState.matchPercentage = percentage;
     return { ...this.gameState };
-  }
+}
 }
 
-export default new GameStateService();
+export const gameStateService = new GameStateService();
