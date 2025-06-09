@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { toast } from 'react-toastify';
-import { gameStateService, levelService, shapeService } from '@/services';
+import { gameStateService, levelService, shapeService, hintService } from '@/services';
 import Loader from '@/components/atoms/Loader';
 import GameHeader from '@/components/organisms/GameHeader';
 import GameCanvas from '@/components/organisms/GameCanvas';
 import ControlPanel from '@/components/organisms/ControlPanel';
 import GameOverlay from '@/components/organisms/GameOverlay';
+import HintOverlay from '@/components/organisms/HintOverlay';
 
 const GameFeature = () => {
     const [gameState, setGameState] = useState(null);
@@ -15,12 +16,15 @@ const GameFeature = () => {
     const [draggedShape, setDraggedShape] = useState(null);
     const [gameStarted, setGameStarted] = useState(false);
     const [gameOver, setGameOver] = useState(false);
-    const [showSuccessModal, setShowSuccessModal] = useState(false);
+const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [hintsRemaining, setHintsRemaining] = useState(3);
+    const [showHint, setShowHint] = useState(false);
+    const [currentHint, setCurrentHint] = useState(null);
     const canvasRef = useRef(null);
     const timerRef = useRef(null);
     const morphTimerRef = useRef(null);
-
+    const hintTimerRef = useRef(null);
     // Load initial game data
     useEffect(() => {
         const initializeGame = async () => {
@@ -121,7 +125,7 @@ const GameFeature = () => {
         setShowSuccessModal(false);
     }, []);
 
-    const restartLevel = useCallback(async () => {
+const restartLevel = useCallback(async () => {
         try {
             const levelShapes = await shapeService.getByLevel(currentLevel.id);
             const resetState = await gameStateService.resetLevel(currentLevel.id);
@@ -133,12 +137,15 @@ const GameFeature = () => {
             setSelectedShape(null);
             setDraggedShape(null);
             setGameStarted(false);
+            setHintsRemaining(3);
+            setShowHint(false);
+            setCurrentHint(null);
         } catch (error) {
             toast.error('Failed to restart level');
         }
     }, [currentLevel]);
 
-    const nextLevel = useCallback(async () => {
+const nextLevel = useCallback(async () => {
         try {
             const nextLevelId = currentLevel.id + 1;
             const level = await levelService.getById(nextLevelId);
@@ -152,6 +159,9 @@ const GameFeature = () => {
             setSelectedShape(null);
             setDraggedShape(null);
             setGameStarted(true);
+            setHintsRemaining(3);
+            setShowHint(false);
+            setCurrentHint(null);
         } catch (error) {
             toast.error('No more levels available');
             setShowSuccessModal(false);
@@ -207,8 +217,43 @@ const GameFeature = () => {
         if (percentage >= currentLevel.requiredAccuracy) return 'text-success';
         if (percentage >= 50) return 'text-warning';
         return 'text-error';
-    }, [gameState, currentLevel]);
+}, [gameState, currentLevel]);
 
+    const handleUseHint = useCallback(async () => {
+        if (hintsRemaining <= 0 || !selectedShape || !currentLevel) {
+            toast.warning('No hints remaining or no shape selected');
+            return;
+        }
+
+        try {
+            const hint = await hintService.getOptimalSolution(currentLevel.id, selectedShape);
+            setCurrentHint(hint);
+            setShowHint(true);
+            setHintsRemaining(prev => prev - 1);
+
+            // Auto-hide hint after 3 seconds
+            if (hintTimerRef.current) {
+                clearTimeout(hintTimerRef.current);
+            }
+            hintTimerRef.current = setTimeout(() => {
+                setShowHint(false);
+                setCurrentHint(null);
+            }, 3000);
+
+            toast.success('Hint displayed! Watch the optimal position.');
+        } catch (error) {
+            toast.error('Failed to get hint');
+        }
+    }, [hintsRemaining, selectedShape, currentLevel]);
+
+    // Cleanup hint timer
+    useEffect(() => {
+        return () => {
+            if (hintTimerRef.current) {
+                clearTimeout(hintTimerRef.current);
+            }
+        };
+    }, []);
     if (loading) {
         return <Loader />;
     }
@@ -235,16 +280,26 @@ const GameFeature = () => {
                 onShapeDragEnd={handleShapeDrag}
             />
 
-            <ControlPanel
+<ControlPanel
                 selectedShape={selectedShape}
                 gameStarted={gameStarted}
                 gameOver={gameOver}
+                hintsRemaining={hintsRemaining}
                 onRotate={handleShapeRotate}
                 onShrink={() => handleShapeScale(-0.1)}
                 onGrow={() => handleShapeScale(0.1)}
                 onRestartLevel={restartLevel}
+                onUseHint={handleUseHint}
             />
 
+            <HintOverlay
+                isVisible={showHint}
+                hint={currentHint}
+                onClose={() => {
+                    setShowHint(false);
+                    setCurrentHint(null);
+                }}
+            />
             <GameOverlay
                 type="start"
                 isVisible={!gameStarted && !gameOver && !showSuccessModal}
