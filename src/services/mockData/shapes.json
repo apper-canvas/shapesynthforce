@@ -1,0 +1,361 @@
+[
+  {
+    "id": "circle-1",
+    "type": "circle",
+    "levelId": 1,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#8B5CF6",
+        "color2": "#EC4899", 
+        "borderRadius": "50%"
+      },
+      {
+        "color1": "#6366F1",
+        "color2": "#8B5CF6",
+        "borderRadius": "50%"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "circle-2",
+    "type": "circle",
+    "levelId": 1,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#EC4899",
+        "color2": "#F97316",
+        "borderRadius": "50%"
+      },
+      {
+        "color1": "#8B5CF6",
+        "color2": "#EC4899",
+        "borderRadius": "50%"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "rect-1",
+    "type": "rectangle",
+    "levelId": 2,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#6366F1",
+        "color2": "#8B5CF6",
+        "borderRadius": "8px"
+      },
+      {
+        "color1": "#8B5CF6",
+        "color2": "#EC4899",
+        "borderRadius": "12px"
+      },
+      {
+        "color1": "#EC4899",
+        "color2": "#F97316",
+        "borderRadius": "16px"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "triangle-1",
+    "type": "triangle",
+    "levelId": 2,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#10B981",
+        "color2": "#6366F1",
+        "borderRadius": "20% 80% 80% 20% / 20% 20% 80% 80%"
+      },
+      {
+        "color1": "#6366F1",
+        "color2": "#8B5CF6",
+        "borderRadius": "30% 70% 70% 30% / 30% 30% 70% 70%"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "morph-1",
+    "type": "morphing",
+    "levelId": 3,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#8B5CF6",
+        "color2": "#EC4899",
+        "borderRadius": "30% 70% 70% 30% / 30% 30% 70% 70%"
+      },
+      {
+        "color1": "#EC4899",
+        "color2": "#F97316",
+        "borderRadius": "70% 30% 30% 70% / 70% 70% 30% 30%"
+      },
+      {
+        "color1": "#F97316",
+        "color2": "#8B5CF6",
+        "borderRadius": "50% 50% 50% 50% / 30% 70% 70% 30%"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "morph-2",
+    "type": "morphing",
+    "levelId": 3,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#6366F1",
+        "color2": "#10B981",
+        "borderRadius": "60% 40% 40% 60% / 40% 60% 60% 40%"
+      },
+      {
+        "color1": "#10B981",
+        "color2": "#EC4899",
+        "borderRadius": "40% 60% 60% 40% / 60% 40% 40% 60%"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "triangle-2",
+    "type": "triangle",
+    "levelId": 3,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#EC4899",
+        "color2": "#F97316",
+        "borderRadius": "100% 0% 0% 0%"
+      },
+      {
+        "color1": "#F97316",
+        "color2": "#6366F1",
+        "borderRadius": "0% 100% 0% 0%"
+      },
+      {
+        "color1": "#6366F1",
+        "color2": "#EC4899",
+        "borderRadius": "0% 0% 100% 0%"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "complex-1",
+    "type": "complex",
+    "levelId": 4,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#8B5CF6",
+        "color2": "#EC4899",
+        "borderRadius": "60% 40% 30% 70% / 60% 30% 70% 40%"
+      },
+      {
+        "color1": "#EC4899",
+        "color2": "#F97316",
+        "borderRadius": "40% 60% 70% 30% / 30% 70% 40% 60%"
+      },
+      {
+        "color1": "#F97316",
+        "color2": "#10B981",
+        "borderRadius": "70% 30% 40% 60% / 70% 40% 60% 30%"
+      },
+      {
+        "color1": "#10B981",
+        "color2": "#6366F1",
+        "borderRadius": "30% 70% 60% 40% / 40% 60% 30% 70%"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "complex-2",
+    "type": "complex",
+    "levelId": 4,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#6366F1",
+        "color2": "#8B5CF6",
+        "borderRadius": "80% 20% 60% 40% / 20% 80% 40% 60%"
+      },
+      {
+        "color1": "#8B5CF6",
+        "color2": "#EC4899",
+        "borderRadius": "20% 80% 40% 60% / 80% 20% 60% 40%"
+      },
+      {
+        "color1": "#EC4899",
+        "color2": "#10B981",
+        "borderRadius": "40% 60% 80% 20% / 60% 40% 20% 80%"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "morph-3",
+    "type": "morphing",
+    "levelId": 4,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#F97316",
+        "color2": "#EC4899",
+        "borderRadius": "100% 0% 50% 50% / 50% 50% 0% 100%"
+      },
+      {
+        "color1": "#EC4899",
+        "color2": "#8B5CF6",
+        "borderRadius": "50% 50% 0% 100% / 100% 0% 50% 50%"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "expert-1",
+    "type": "expert",
+    "levelId": 5,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#8B5CF6",
+        "color2": "#EC4899",
+        "borderRadius": "100% 0% 50% 0% / 0% 100% 0% 50%"
+      },
+      {
+        "color1": "#EC4899",
+        "color2": "#F97316",
+        "borderRadius": "50% 0% 100% 0% / 100% 0% 50% 0%"
+      },
+      {
+        "color1": "#F97316",
+        "color2": "#10B981",
+        "borderRadius": "0% 50% 0% 100% / 50% 0% 100% 0%"
+      },
+      {
+        "color1": "#10B981",
+        "color2": "#6366F1",
+        "borderRadius": "0% 100% 0% 50% / 0% 50% 0% 100%"
+      },
+      {
+        "color1": "#6366F1",
+        "color2": "#8B5CF6",
+        "borderRadius": "100% 0% 50% 0% / 0% 100% 0% 50%"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "expert-2",
+    "type": "expert",
+    "levelId": 5,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#6366F1",
+        "color2": "#8B5CF6",
+        "borderRadius": "90% 10% 80% 20% / 20% 80% 10% 90%"
+      },
+      {
+        "color1": "#8B5CF6",
+        "color2": "#EC4899",
+        "borderRadius": "10% 90% 20% 80% / 80% 20% 90% 10%"
+      },
+      {
+        "color1": "#EC4899",
+        "color2": "#F97316",
+        "borderRadius": "80% 20% 90% 10% / 10% 90% 20% 80%"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "expert-3",
+    "type": "expert",
+    "levelId": 5,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#EC4899",
+        "color2": "#F97316",
+        "borderRadius": "75% 25% 60% 40% / 40% 60% 25% 75%"
+      },
+      {
+        "color1": "#F97316",
+        "color2": "#10B981",
+        "borderRadius": "25% 75% 40% 60% / 60% 40% 75% 25%"
+      },
+      {
+        "color1": "#10B981",
+        "color2": "#6366F1",
+        "borderRadius": "60% 40% 75% 25% / 25% 75% 40% 60%"
+      },
+      {
+        "color1": "#6366F1",
+        "color2": "#EC4899",
+        "borderRadius": "40% 60% 25% 75% / 75% 25% 60% 40%"
+      }
+    ],
+    "currentMorphIndex": 0
+  },
+  {
+    "id": "expert-4",
+    "type": "expert",
+    "levelId": 5,
+    "position": { "x": null, "y": null },
+    "rotation": 0,
+    "scale": 1,
+    "morphStates": [
+      {
+        "color1": "#10B981",
+        "color2": "#6366F1",
+        "borderRadius": "85% 15% 70% 30% / 30% 70% 15% 85%"
+      },
+      {
+        "color1": "#6366F1",
+        "color2": "#8B5CF6",
+        "borderRadius": "15% 85% 30% 70% / 70% 30% 85% 15%"
+      },
+      {
+        "color1": "#8B5CF6",
+        "color2": "#EC4899",
+        "borderRadius": "70% 30% 85% 15% / 15% 85% 30% 70%"
+      }
+    ],
+    "currentMorphIndex": 0
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "difficulty": "Beginner",
+    "targetOutline": {
+      "width": 120,
+      "height": 120,
+      "borderRadius": "50%",
+      "rotation": 0
+    },
+    "availableShapes": ["circle-1", "circle-2"],
+    "timeLimit": 60,
+    "morphSpeed": 4000,
+    "requiredAccuracy": 85
+  },
+  {
+    "id": 2,
+    "difficulty": "Easy",
+    "targetOutline": {
+      "width": 140,
+      "height": 100,
+      "borderRadius": "20px",
+      "rotation": 0
+    },
+    "availableShapes": ["rect-1", "triangle-1"],
+    "timeLimit": 90,
+    "morphSpeed": 3500,
+    "requiredAccuracy": 85
+  },
+  {
+    "id": 3,
+    "difficulty": "Medium",
+    "targetOutline": {
+      "width": 160,
+      "height": 120,
+      "borderRadius": "30% 70% 70% 30% / 30% 30% 70% 70%",
+      "rotation": 45
+    },
+    "availableShapes": ["morph-1", "morph-2", "triangle-2"],
+    "timeLimit": 120,
+    "morphSpeed": 3000,
+    "requiredAccuracy": 85
+  },
+  {
+    "id": 4,
+    "difficulty": "Hard",
+    "targetOutline": {
+      "width": 180,
+      "height": 140,
+      "borderRadius": "60% 40% 30% 70% / 60% 30% 70% 40%",
+      "rotation": 30
+    },
+    "availableShapes": ["complex-1", "complex-2", "morph-3"],
+    "timeLimit": 120,
+    "morphSpeed": 2500,
+    "requiredAccuracy": 90
+  },
+  {
+    "id": 5,
+    "difficulty": "Expert",
+    "targetOutline": {
+      "width": 200,
+      "height": 160,
+      "borderRadius": "100% 0% 50% 0% / 0% 100% 0% 50%",
+      "rotation": 60
+    },
+    "availableShapes": ["expert-1", "expert-2", "expert-3", "expert-4"],
+    "timeLimit": 120,
+    "morphSpeed": 2000,
+    "requiredAccuracy": 95
+  }
+]
