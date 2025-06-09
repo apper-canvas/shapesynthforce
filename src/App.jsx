@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { motion } from 'framer-motion';
 import Layout from './components/Layout';
-import Home from './pages/Home';
+import HomePage from '@/components/pages/HomePage';
 import NotFound from './pages/NotFound';
 import { routes, routeArray } from './config/routes';
 
@@ -13,7 +13,7 @@ function App() {
       <div className="min-h-screen bg-surface-900">
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+<Route index element={<HomePage />} />
             {routeArray.map((route) => (
               <Route
                 key={route.id}
