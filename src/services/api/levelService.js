@@ -19,7 +19,7 @@ class LevelService {
       throw new Error(`Level ${id} not found`);
     }
     return { ...level };
-  }
+}
 
   async getByDifficulty(difficulty) {
     await delay(300);
@@ -27,4 +27,4 @@ class LevelService {
   }
 }
 
-export default new LevelService();
+export const levelService = new LevelService();

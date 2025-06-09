@@ -19,23 +19,22 @@ class ShapeService {
       throw new Error(`Shape ${id} not found`);
     }
     return { ...shape };
+return { ...shape };
   }
 
   async getByLevel(levelId) {
-    await delay(300);
-    return this.shapes
-      .filter(s => s.levelId === levelId)
-      .map(s => ({ 
-        ...s, 
-        position: { x: null, y: null }, // Reset position
-        rotation: 0, // Reset rotation
-        scale: 1, // Reset scale
-        currentMorphIndex: 0 // Reset morph state
-      }));
+    await delay(200);
+    const levelShapes = this.shapes.filter(s => s.levelId === levelId);
+    return levelShapes.map(s => ({
+      ...s,
+      rotation: 0,
+      scale: 1,
+      currentMorphIndex: 0
+    }));
   }
 
   async updateShape(id, updates) {
-    await delay(200);
+    await delay(300);
     const index = this.shapes.findIndex(s => s.id === id);
     if (index === -1) {
       throw new Error(`Shape ${id} not found`);
@@ -45,4 +44,5 @@ class ShapeService {
   }
 }
 
-export default new ShapeService();
+export const shapeService = new ShapeService();
+export default shapeService;
